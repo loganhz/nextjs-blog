@@ -18,18 +18,18 @@ services:
           NODE_PATH: /opt/nodejs/node_modules
           LD_LIBRARY_PATH: >-
             /code:/code/lib:/usr/local/lib:/opt/lib:/opt/php8.1/lib:/opt/php8.0/lib:/opt/php7.2/lib
-        layersArnV2:
+        layers:
           - acs:fc:cn-hangzhou:official:layers/Nodejs16/versions/2
         memorySize: 512
         cpu: 0.35
         timeout: 60
-        codeUri: ./
+        codeUri: ./.next/standalone
         diskSize: 10240
         caPort: 3000
         customRuntimeConfig:
           command:
             - node
-          arg:
+          args:
             - server.js
       triggers:
         - name: httpTrigger
